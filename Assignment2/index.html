@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="app.css">
+    <title>Assignment 02 - Coursera Single Page Web Application</title>
+  </head>
+  <body ng-app="ShoppingListApp" >
+    <h1 class="mainTitle">Assignment 02 - Coursera Single Page Web Application</h1>
+    <h2 class="secondaryTitle">The Shopping List</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm" ng-controller="ToBuyController as toBuy">
+          <div class="bg_block">
+            <h3>List of Things to Buy:</h3>
+            <ul>
+              <li ng-repeat="item in toBuy.items">
+                <p>{{item.quantity}} of {{item.name}}
+                <button ng-click="toBuy.buyingItems($index);"type="button"> Remove</button>
+                </p>
+              </li>
+              <h4 ng-if="toBuy.items.length === 0;" class="error"> Error: No more Items to buy! You wasted all your money!<br>
+                <img class="poorimg" src="poor.jpg" alt="poor image">
+              </h4>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm" ng-controller="AlreadyBoughtController as bought">
+          <div class="bg_block">
+            <h3>List of things already bought:</h3>
+            <ul>
+              <li ng-repeat="item in bought.items"><p>{{item.quantity}} of {{item.name}}</p></li>
+            </ul>
+            <h4 ng-if="bought.items.length === 0;"> Well, You got a lot of money, but feel really hungry... <br>
+              <img class="hungryimg" src="hungry.jpg" alt="hungry image">
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
